@@ -1,73 +1,70 @@
+/**=====================================================================================================================
+ * @file TaskList.tsx
+ * @description This file contains the TaskList component, which renders a list of tasks and manages their layout.
+ * 
+ * @uses TaskItem component to render each individual task in the list.
+ * @uses useTaskStore hook to retrieve the list of tasks from the global state.
+ * 
+ * @exports TaskList component to be displayed.
+ * @see TaskDashboard component.
+ =====================================================================================================================*/
 import { useTaskStore } from "@/stores/useTaskStore";
 import TaskItem from "./TaskItem";
-import { TaskService } from "@/services/tasks/TaskService";
-import { Button } from "@/components/ui/Button";
-import { ConfirmationAlert } from "@/components/ui/AlertDialog";
 
 /**
  * TaskList Component
- * @description Displays a list of tasks with options to add new tasks, clear all tasks,
- * and interact with individual tasks. Utilizes TaskService for task management.
+ * @description Represents a scrollable list of tasks, each rendered using the TaskItem component.
+ *              Includes sticky bars at the top and bottom for UI consistency.
  */
 const TaskList = () => {
-    // Fetch tasks from the store
     const tasks = useTaskStore((state) => state.tasks);
 
-    /**
-     * Creates a new task with default values.
-     */
-    const newTask = (): void => {
-        TaskService.getInstance().createTask({
-            source: "Source",
-            description: "Description",
-            duration: 120,
-            completed: false,
-        });
-    };
-
     return (
-        <div className="w-full h-fill bg-background-1 rounded-corner flex flex-col items-end">
-            {/* === Title === */}
-            <h2 className="w-full bg-gray-100 rounded-t-[10px] py-1 text-gray-950 flex justify-center items-center font-medium text-[18px] border-b-1 border-gray-300">
-                Tasks
-            </h2>
-
-            {/* === Add new task button === */}
-            <Button className="w-30 mt-2 mr-2" onClick={newTask}>
-                Add Task
-            </Button>
-
-            {/* Tasks list */}
-            <div className="w-full h-fill bg-background-1 rounded-[10px] flex flex-col gap-2 p-2">
-                {tasks.map((task) => {
-                    return (
-                        <TaskItem
-                            key={task.id}
-                            id={task.id}
-                            source={task.source}
-                            description={task.description}
-                            duration={task.duration}
-                            completed={task.completed}
-                        />
-                    );
-                })}
-            </div>
-
-            {/* === Clear all tasks button === */}
-            <ConfirmationAlert
-                message="Are you Sure ?"
-                additionalMessage="All tasks will be removed definitely"
-                actionLabel="Remove All"
-                callback={() => TaskService.getInstance().deleteAllTasks()}
-            >
-                <div className="p-2 w-full">
-                    <Button variant={"outline"} className="w-full">
-                        Remove All
-                    </Button>
+        <div className="w-fill relative h-task-list-height bg-background-1 rounded-corner flex flex-col overflow-y-scroll scroll">
+            <FixedBar top={true} />
+            {tasks.length > 0 ? (
+                <div className="px-task-list-padding flex flex-col gap-2">
+                    {tasks.map((task) => {
+                        return (
+                            <TaskItem
+                                key={task.id}
+                                id={task.id}
+                                source={task.source}
+                                description={task.description}
+                                duration={task.duration}
+                                completed={task.completed}
+                            />
+                        );
+                    })}
                 </div>
-            </ConfirmationAlert>
+            ) : (
+                <NoContent />
+            )}
+
+            <FixedBar top={false} />
         </div>
     );
 };
 
 export default TaskList;
+
+/* ================================================= Local Helpers ================================================== */
+
+const FixedBar = ({ top }: { top: boolean }) => {
+    return (
+        <div
+            className={`sticky ${
+                top ? "top-0" : "bottom-0"
+            } w-full left-0 py-[1px] bg-background-1 text-background-1`}
+        >
+            This text is only for adding some width because the height property
+            is not working; this text is not visible.
+        </div>
+    );
+};
+
+const NoContent = () => {
+    return <div className="w-task-item h-full flex justify-center items-center">
+        <p className="text-4xl text-background-2 font-exo2 font-medium">Add somme tasks</p>
+    </div>
+};

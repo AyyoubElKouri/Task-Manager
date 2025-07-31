@@ -41,29 +41,28 @@
 
 body {
     font-family: "Supreme", sans-serif;
-    background-color: #f0f0f0;
+    background-color: #000000;
 }
 
-/* Applique à tout le document (ou tu peux cibler une classe spécifique) */
-* {
-    scrollbar-width: thin; /* Pour Firefox */
-    scrollbar-color: #ccc transparent; /* Couleur du thumb et du track */
-}
 
-/* Pour les navigateurs WebKit (Chrome, Edge, etc.) */
 ::-webkit-scrollbar {
-    width: 6px; /* largeur de la scrollbar verticale */
-    height: 6px; /* hauteur de la scrollbar horizontale */
+    overflow-y: auto;
+    width: 8px;
+    background-color: #373a3f;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #ccc; /* couleur du "thumb" (la barre qu'on déplace) */
+    background-color: #bbb9b9;
     border-radius: 10px;
 }
 
-::-webkit-scrollbar-track {
-    background: transparent; /* fond de la scrollbar */
+
+.scroll::-webkit-scrollbar {
+    
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
+
 
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
@@ -121,6 +120,8 @@ body {
     --spacing-task-item-completed: 100px;
     --spacing-task-item-delete: 40px;
     --spacing-task-item-height: 49px;
+    --spacing-task-list-padding: 26px;
+    --spacing-task-list-height: 500px;
 }
 
 :root {
@@ -166,3 +167,4 @@ body {
         @apply bg-background text-foreground;
     }
 }
+

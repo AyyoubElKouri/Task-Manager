@@ -27,8 +27,7 @@ const TaskDashboard = () => {
     } = useStatistics();
 
     return (
-        <div>
-            <div className="flex justify-center flex-col items-center p-6 gap-4">
+            <div className="flex justify-center flex-col items-center p-6 gap-4 min-h-screen bg-[url('/images/Pattern.svg')] bg-repeat">
                 {/* === Statistics Section === */}
                 <StatGroup>
                     <StatItem label="Total Tasks" value={numberOfTasks} />
@@ -51,7 +50,6 @@ const TaskDashboard = () => {
                 <TaskList />
                 <ActionButtons />
             </div>
-        </div>
     );
 };
 

@@ -22,25 +22,26 @@ const TaskList = () => {
     return (
         <div className="w-fill relative h-task-list-height bg-background-1 rounded-corner flex flex-col overflow-y-scroll scroll">
             <FixedBar top={true} />
-            {tasks.length > 0 ? (
-                <div className="px-task-list-padding flex flex-col gap-2">
-                    {tasks.map((task) => {
-                        return (
-                            <TaskItem
-                                key={task.id}
-                                id={task.id}
-                                source={task.source}
-                                description={task.description}
-                                duration={task.duration}
-                                completed={task.completed}
-                            />
-                        );
-                    })}
-                </div>
-            ) : (
-                <NoContent />
-            )}
-
+            <div className="px-task-list-padding h-full">
+                {tasks.length > 0 ? (
+                    <div className="flex flex-col gap-2">
+                        {tasks.map((task) => {
+                            return (
+                                <TaskItem
+                                    key={task.id}
+                                    id={task.id}
+                                    source={task.source}
+                                    description={task.description}
+                                    duration={task.duration}
+                                    completed={task.completed}
+                                />
+                            );
+                        })}
+                    </div>
+                ) : (
+                    <NoContent />
+                )}
+            </div>
             <FixedBar top={false} />
         </div>
     );
@@ -64,7 +65,11 @@ const FixedBar = ({ top }: { top: boolean }) => {
 };
 
 const NoContent = () => {
-    return <div className="w-task-item h-full flex justify-center items-center">
-        <p className="text-4xl text-background-2 font-exo2 font-medium">Add somme tasks</p>
-    </div>
+    return (
+        <div className="w-task-item px-task-list-padding h-full flex justify-center items-center">
+            <p className="text-4xl text-background-2 font-exo2 font-medium">
+                Add somme tasks
+            </p>
+        </div>
+    );
 };

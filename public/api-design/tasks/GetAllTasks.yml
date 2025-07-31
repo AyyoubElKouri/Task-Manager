@@ -1,0 +1,93 @@
+# ----------------------------------------------------------------------------------------------------------------------
+
+Title: Get All Tasks
+
+Module: Tasks
+API: GET http://localhost:3000/api/tasks
+
+Author: Ayyoub el kouri
+Date: 29-07-2025
+Version: 1.0.0
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+Method: "GET"
+Url: "http://localhost:3000/api/tasks"
+
+Authentication:
+    required: true
+    strategie: JWT
+
+Authorization: User
+
+Headers:
+    Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+    x-api-key: SomeKey34334234234
+
+PathParameters: NONE
+
+QueryParameters: NONE
+
+RequestBody: NONE
+
+Response:
+    SUCCESS:
+        CASE (200):
+            Body:
+                {
+                    success: true,
+                    message: "Tasks Retrieved Successfully.",
+                    tasks:
+                        [
+                            {
+                                id: 23,
+                                source: "KodeKloud",
+                                description: "Learn Docker from Docker Training Course",
+                                duration: 120,
+                                completed: true,
+                            },
+                            {
+                                id: 43,
+                                source: "KodeKloud",
+                                description: "Learn Linux from Linux Training Course",
+                                duration: 60,
+                                completed: false,
+                            },
+                        ],
+                }
+    ERROR:
+        CASE 1 (400):
+            {
+                success: false,
+                message: "GET request should not contain a body",
+                details: [name, date],
+                error: "UNEXPECTED_FIELD",
+            }
+
+        CASE 2 (401):
+            {
+                success: false,
+                message: "User not authenticated",
+                error: "AUTHENTICATION_FAILED",
+            }
+
+        CASE 3 (401):
+            {
+                success: false,
+                message: "Invalid or missing API key",
+                error: "API_KEY_INVALID",
+            }
+
+        CASE 4 (403):
+            {
+                success: false,
+                message: "User not authorized to this resource",
+                error: "AUTHORIZATION_FAILED",
+            }
+
+        CASE 5 (500):
+            {
+                success: false,
+                message: "Unknown error",
+                error: "INTERNAL_SERVER_ERROR",
+            }

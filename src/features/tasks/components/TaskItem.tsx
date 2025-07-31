@@ -28,7 +28,7 @@ const TaskItem = (task: Task) => {
 
     return (
         <div
-            className={`w-task-item h-task-item-height bg-background-2 rounded-corner flex`}
+            className={`w-task-item h-task-item-height min-h-task-item-height bg-background-2 rounded-corner flex`}
         >
             {/* === Delete Button === */}
             <ConfirmationAlert

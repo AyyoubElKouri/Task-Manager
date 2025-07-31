@@ -31,7 +31,7 @@ const TaskDashboard = () => {
             <div className="flex justify-center flex-col items-center p-6 gap-4">
                 {/* === Statistics Section === */}
                 <StatGroup>
-                    <StatItem label="All Tasks" value={numberOfTasks} />
+                    <StatItem label="Total Tasks" value={numberOfTasks} />
                     <StatItem
                         label="Completed Tasks"
                         value={numberOfCompletedTasks}

@@ -20,29 +20,24 @@ const TaskList = () => {
     const tasks = useTaskStore((state) => state.tasks);
 
     return (
-        <div className="w-fill relative h-task-list-height bg-background-1 rounded-corner flex flex-col overflow-y-scroll scroll">
-            <FixedBar top={true} />
-            <div className="px-task-list-padding h-full">
-                {tasks.length > 0 ? (
-                    <div className="flex flex-col gap-2">
-                        {tasks.map((task) => {
-                            return (
-                                <TaskItem
-                                    key={task.id}
-                                    id={task.id}
-                                    source={task.source}
-                                    description={task.description}
-                                    duration={task.duration}
-                                    completed={task.completed}
-                                />
-                            );
-                        })}
-                    </div>
-                ) : (
-                    <NoContent />
-                )}
+        <div className="w-fill relative h-task-list-height bg-background-1 rounded-corner overflow-hidden">
+            <div className="h-full overflow-y-scroll scroll flex flex-col">
+                <FixedBar top />
+
+                <div className="flex-1 px-task-list-padding">
+                    {tasks.length > 0 ? (
+                        <div className="flex flex-col gap-2">
+                            {tasks.map((task) => {
+                                return <TaskItem key={task.id} {...task} />;
+                            })}
+                        </div>
+                    ) : (
+                        <NoContent />
+                    )}
+                </div>
+
+                <FixedBar top={false} />
             </div>
-            <FixedBar top={false} />
         </div>
     );
 };
@@ -56,7 +51,7 @@ const FixedBar = ({ top }: { top: boolean }) => {
         <div
             className={`sticky ${
                 top ? "top-0" : "bottom-0"
-            } w-full left-0 py-[1px] bg-background-1 text-background-1`}
+            } bg-background-1 py-[1px] w-full text-background-1 z-10 flex-shrink-0`}
         >
             This text is only for adding some width because the height property
             is not working; this text is not visible.
@@ -66,7 +61,7 @@ const FixedBar = ({ top }: { top: boolean }) => {
 
 const NoContent = () => {
     return (
-        <div className="w-task-item px-task-list-padding h-full flex justify-center items-center">
+        <div className="w-task-item h-full flex justify-center items-center">
             <p className="text-4xl text-background-2 font-exo2 font-medium">
                 Add somme tasks
             </p>

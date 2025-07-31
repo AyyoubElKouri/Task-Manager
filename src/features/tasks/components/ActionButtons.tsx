@@ -1,7 +1,23 @@
+/**=====================================================================================================================
+ * @file ActionButtons.tsx
+ * @description This file contains the ActionButtons component, which provides buttons for delete all tasks and Add new
+ *              Task actions.
+ * 
+ * @uses Button component to render individual buttons with consistent styling.
+ * @uses useActionButtons hook for ActionButtons Logic.
+ * @uses ConfirmationAlert component for Delete all task action.
+ * 
+ * @exports ActionButtons component.
+ =====================================================================================================================*/
+
 import { Button } from "@/components/ui/Button";
 import useActionButtons from "../hooks/useActionButtons";
 import { ConfirmationAlert } from "@/components/ui/AlertDialog";
 
+/**
+ * ActionButtons Component
+ * @description Renders a group of action buttons (delete all tasks, add new Task).
+ */
 const ActionButtons = () => {
     const { actions } = useActionButtons();
 

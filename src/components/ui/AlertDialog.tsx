@@ -26,10 +26,10 @@ export const ConfirmationAlert = ({
             {/* The Main Section, The Alert will popup wen this section is clicked. */}
             <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
 
-            <AlertDialogContent className="p-0 border-1 border-gray-300 bg-gray-50">
+            <AlertDialogContent className="p-0 border-0 bg-black rounded-corner">
                 <div className="p-4">
                     <AlertDialogHeader>
-                        <AlertDialogTitle>{message}</AlertDialogTitle>
+                        <AlertDialogTitle className="text-white">{message}</AlertDialogTitle>
                     </AlertDialogHeader>
                     <AlertDialogDescription>
                         {additionalMessage}

@@ -11,16 +11,16 @@ import { TaskService } from "@/services/tasks/TaskService";
 import type { Task } from "@/types/entities.types";
 import { useCallback, useMemo, useState, type ChangeEvent } from "react";
 
-interface Actions {
-    save: () => void;
-    toggle: () => void;
-    delete: () => void;
+interface Handlers {
+    handleSave: () => void;
+    handleToggle: () => void;
+    handleDelete: () => void;
 }
 
 interface Setters {
-    source: (e: ChangeEvent<HTMLInputElement>) => void;
-    description: (e: ChangeEvent<HTMLInputElement>) => void;
-    duration: (e: ChangeEvent<HTMLInputElement>) => void;
+    setSource: (e: ChangeEvent<HTMLInputElement>) => void;
+    setDescription: (e: ChangeEvent<HTMLInputElement>) => void;
+    setDuration: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const useTaskItem = ({
@@ -91,10 +91,10 @@ const useTaskItem = ({
     /**
      * Groups all handlers for easier export and import.
      */
-    const actions: Actions = {
-        save: handleSave,
-        toggle: handleToggle,
-        delete: handleDelete,
+    const handlers: Handlers = {
+        handleSave,
+        handleToggle,
+        handleDelete,
     };
 
     /**
@@ -102,16 +102,16 @@ const useTaskItem = ({
      */
     const setters: Setters = useMemo(
         () => ({
-            source: setSource,
-            description: setDescription,
-            duration: setDuration,
+            setSource,
+            setDescription,
+            setDuration,
         }),
         []
     );
 
     return {
         informations,
-        actions,
+        handlers,
         setters,
     };
 };

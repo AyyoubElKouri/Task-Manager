@@ -24,7 +24,7 @@ import { ConfirmationAlert } from "@/components/ui/AlertDialog";
  * @param task - The task object containing its properties.
  */
 const TaskItem = (task: Task) => {
-    const { informations, actions, setters } = useTaskItem(task);
+    const { informations, handlers, setters } = useTaskItem(task);
 
     return (
         <div
@@ -35,18 +35,18 @@ const TaskItem = (task: Task) => {
                 message={ConfirmationLabels.Message}
                 additionalMessage={ConfirmationLabels.AdditionalMessage}
                 actionLabel={ConfirmationLabels.ActionLabel}
-                callback={actions.delete}
+                callback={handlers.handleDelete}
             >
                 <button className="w-task-item-delete flex justify-center items-center rounded-l-corner border-r-1 border-background-1 active:scale-90 bg-background-red">
-                    <img src="/images/Delete.svg" className="w-4 h-4" />
+                    <img src="./images/Delete.svg" className="w-4 h-4" />
                 </button>
             </ConfirmationAlert>
 
             {/* === Source Section === */}
             <TaskInformation
                 value={informations.source}
-                onChange={setters.source}
-                onSave={actions.save}
+                onChange={setters.setSource}
+                onSave={handlers.handleSave}
                 className="pl-3 w-task-item-source font-exo2 font-semibold"
                 length={17}
             />
@@ -54,8 +54,8 @@ const TaskItem = (task: Task) => {
             {/* === Description Section === */}
             <TaskInformation
                 value={informations.description}
-                onChange={setters.description}
-                onSave={actions.save}
+                onChange={setters.setDescription}
+                onSave={handlers.handleSave}
                 className="pl-3 w-task-item-description font-exo2 justify-start"
                 length={80}
             />
@@ -63,8 +63,8 @@ const TaskItem = (task: Task) => {
             {/* === Duration Section === */}
             <TaskInformation
                 value={informations.duration}
-                onChange={setters.duration}
-                onSave={actions.save}
+                onChange={setters.setDuration}
+                onSave={handlers.handleSave}
                 className="pl-3 w-task-item-duration font-exo2 justify-start"
             />
 
@@ -75,7 +75,7 @@ const TaskItem = (task: Task) => {
                         ? "bg-background-blue"
                         : "bg-background-orange "
                 }`}
-                onClick={actions.toggle}
+                onClick={handlers.handleToggle}
             >
                 <Icon completed={task.completed} />
             </button>
@@ -97,9 +97,9 @@ const Icon = ({ completed }: { completed: boolean }) => {
     return (
         <>
             {completed ? (
-                <img src="/images/Completed.svg" className="w-7 h-7" />
+                <img src="./images/Completed.svg" className="w-7 h-7" />
             ) : (
-                <img src="/images/Timer.svg" className="w-5 h-5" />
+                <img src="./images/Timer.svg" className="w-5 h-5" />
             )}
         </>
     );

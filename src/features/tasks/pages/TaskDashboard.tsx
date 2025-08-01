@@ -27,7 +27,7 @@ const TaskDashboard = () => {
     } = useStatistics();
 
     return (
-            <div className="flex justify-center flex-col items-center p-6 gap-4 min-h-screen bg-[url('/images/Pattern.svg')] bg-repeat">
+            <div className="flex justify-center flex-col items-center gap-4 min-h-screen bg-[url('/images/Pattern.svg')] bg-repeat">
                 {/* === Statistics Section === */}
                 <StatGroup>
                     <StatItem label="Total Tasks" value={numberOfTasks} />
@@ -39,7 +39,7 @@ const TaskDashboard = () => {
                     <StatItem
                         label="Total Completed Hours"
                         value={numberOfCompletedHours}
-                    />{" "}
+                    />
                     <StatItem
                         label="Rate of Completione"
                         value={rateOfCompletion}

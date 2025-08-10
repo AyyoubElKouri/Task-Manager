@@ -16,6 +16,7 @@ import TaskInformation from "./TaskInformation";
 import type { Task } from "@/types/entities.types";
 import useTaskItem from "../hooks/useTaskItem";
 import { ConfirmationAlert } from "@/components/ui/AlertDialog";
+import { Copy } from "lucide-react";
 
 /**
  * TaskItem Component
@@ -41,6 +42,10 @@ const TaskItem = (task: Task) => {
                     <img src="./images/Delete.svg" className="w-4 h-4" />
                 </button>
             </ConfirmationAlert>
+
+            <button className="w-task-item-delete flex justify-center items-center border-r-1 border-background-1 active:scale-90 bg-green-900 text-white" onClick={handlers.handleCopy}>
+                <Copy className="w-5" />
+            </button>
 
             {/* === Source Section === */}
             <TaskInformation
@@ -104,3 +109,4 @@ const Icon = ({ completed }: { completed: boolean }) => {
         </>
     );
 };
+

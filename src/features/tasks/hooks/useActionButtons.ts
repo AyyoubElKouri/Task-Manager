@@ -17,7 +17,7 @@ const useActionButtons = () => {
         const task: Task = {
             source: "Default Source",
             description: "Default Description",
-            duration: 130,
+            duration: 50,
             completed: false,
         };
 
@@ -47,3 +47,4 @@ const useActionButtons = () => {
 };
 
 export default useActionButtons;
+

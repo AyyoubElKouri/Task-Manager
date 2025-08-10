@@ -15,6 +15,7 @@ interface Handlers {
     handleSave: () => void;
     handleToggle: () => void;
     handleDelete: () => void;
+    handleCopy: () => void;
 }
 
 interface Setters {
@@ -65,6 +66,27 @@ const useTaskItem = ({
     }, [id]);
 
     /**
+     * Copy task
+     */
+    const handleCopy = useCallback(() => {
+        try {
+            const taskToCopy = TaskService.getInstance()
+                .getAllTasks()
+                .find((task) => task.id === id);
+            if (taskToCopy === undefined) return;
+
+            TaskService.getInstance().createTask({
+                source: taskToCopy.source,
+                description: taskToCopy.description,
+                duration: taskToCopy.duration,
+                completed: taskToCopy.completed,
+            });
+        } catch (error: unknown) {
+            // TODO: implemnet error handling.
+        }
+    }, [id]);
+
+    /**
      * Sets the source property of the task.
      */
     const setSource = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -95,6 +117,7 @@ const useTaskItem = ({
         handleSave,
         handleToggle,
         handleDelete,
+        handleCopy,
     };
 
     /**

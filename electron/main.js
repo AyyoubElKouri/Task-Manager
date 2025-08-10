@@ -11,22 +11,20 @@ const __dirname = dirname(__filename);
 function createWindow() {
     nativeTheme.themeSource = "light";
     const win = new BrowserWindow({
-        width: 1024,
-        height: 768,
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
         },
         autoHideMenuBar: true,
     });
-    win.maximize();
     win.webContents;
-
+    
     // En dev : charge React en mode dev
     // win.loadURL("http://localhost:5173");
-
+    
     // En Production.
     win.loadFile(path.join(__dirname, "../dist/index.html"));
+    win.maximize();
 
     win.webContents.once("dom-ready", () => {
         win.webContents.executeJavaScript(`
@@ -49,3 +47,4 @@ app.whenReady().then(() => {
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") app.quit();
 });
+

@@ -14,49 +14,47 @@ import { Button } from "@/components/ui/Button";
 import useActionButtons from "../hooks/useActionButtons";
 import { ConfirmationAlert } from "@/components/ui/AlertDialog";
 
-/**
- * ActionButtons Component
- * @description Renders a group of action buttons (delete all tasks, add new Task).
- */
+// To avoid hard-coded strings.
+const labels = {
+    confirmation: {
+        message: "Are you sure?",
+        additionalMessage: "All tasks will be removed permanently",
+        actionLabel: "Delete All",
+    },
+    buttons: {
+        deleteAll: "Delete All Tasks",
+        newTask: "Add New Task",
+    },
+};
+
 const ActionButtons = () => {
     const { actions } = useActionButtons();
 
     return (
         <div className="flex gap-4">
+            {/* Wrapper to attach a validation alert to the delete-all-tasks action. */}
             <ConfirmationAlert
-                message={ConfirmationLabels.Message}
-                additionalMessage={ConfirmationLabels.AdditionalMessage}
-                actionLabel={ConfirmationLabels.ActionLabel}
-                callback={actions.DeleteAll}
+                message={labels.confirmation.message}
+                additionalMessage={labels.confirmation.additionalMessage}
+                actionLabel={labels.confirmation.actionLabel}
+                callback={actions.deleteAll}
             >
                 <Button
                     variant={"destructive"}
-                    className="w-[291px] h-[50px] text-[16px]"
+                    className="w-action-button-width h-action-button-height text-[16px]"
                 >
-                    {ButtonsLabels.DeleteAll}
+                    {labels.buttons.deleteAll}
                 </Button>
             </ConfirmationAlert>
+
             <Button
-                className="w-[816px] h-[50px] text-[16px]"
-                onClick={actions.NewTask}
+                className="w-action-button-width h-action-button-height text-[16px]"
+                onClick={actions.newTask}
             >
-                {ButtonsLabels.NewTask}
+                {labels.buttons.newTask}
             </Button>
         </div>
     );
 };
 
 export default ActionButtons;
-
-/* ================================================= Local Helpers ================================================== */
-
-const ConfirmationLabels = {
-    Message: "Are you sure ?",
-    AdditionalMessage: "All task will be removed definitively",
-    ActionLabel: "Delete All",
-};
-
-const ButtonsLabels = {
-    DeleteAll: "Delete All Tasks",
-    NewTask: "Add New Task",
-};

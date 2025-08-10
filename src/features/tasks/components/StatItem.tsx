@@ -7,31 +7,18 @@
  * @exports StatItem component for use within StatGroup.
  =====================================================================================================================*/
 
-/**
- * StatItem component for displaying a single statistic.
- * @description Displays a label and its corresponding value in a styled container.
- *
- * @param label - The label for the statistic (e.g. "Total Tasks").
- * @param value - The value corresponding to the label (e.g. 42).
- */
+interface StatItemProps {
+    label: string;
+    value: string | number;
+}
+
 const StatItem = ({ label, value }: StatItemProps) => {
     return (
-        <div className="w-stat-width h-stat-height border-r-1 border-black">
-            <div className="flex justify-center items-end h-stat-label-height text-[16px] text-white">
-                {label}
-            </div>
-            <div className="flex justify-center items-start mt-2 w-full h-stat-value-height bg-blue font-medium text-[22px] text-white">
-                {value}
-            </div>
+        <div className="w-stat-width h-stat-height border-r-1 border-black flex flex-col items-center justify-center gap-2 text-white">
+            <span className="text-gray-300">{label}</span>
+            <span className="text-2xl">{value}</span>
         </div>
     );
 };
 
 export default StatItem;
-
-/* ================================================= Local Helpers ================================================== */
-
-interface StatItemProps {
-    label: string;
-    value: string | number;
-}

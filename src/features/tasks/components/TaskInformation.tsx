@@ -39,7 +39,7 @@ const TaskInformation = ({
             {editMode ? (
                 // If we are in the Edit Mode, render the Edit Input.
                 <EditInput
-                    type={typeof value === "string" ? "text" : "number"}
+                    type={typeof value === "string" ? "string" : "number"}
                     value={value}
                     onChange={onChange}
                     onSave={() => {

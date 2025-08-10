@@ -113,6 +113,7 @@ body {
 
     --font-supreme: Supreme;
     --font-exo2: Exo2;
+    --text-button-action: 16px;
     --spacing-task-item: 1063px;
     --spacing-task-item-source: 151px;
     --spacing-task-item-description: 684px;
@@ -126,6 +127,8 @@ body {
     --spacing-stat-height: 86px;
     --spacing-stat-label-height: 35px;
     --spacing-stat-value-height: 51px;
+    --spacing-action-button-width: 553px;
+    --spacing-action-button-height: 40px
 }
 :root {
     --radius: 0.625rem;

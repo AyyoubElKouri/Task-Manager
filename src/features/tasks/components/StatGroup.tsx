@@ -1,6 +1,6 @@
 /**=====================================================================================================================
  * @file StatGroup.tsx
- * @description This file serves as a container for StatItem components.
+ * @description This component serves as a container for StatItem components.
  * 
  * @uses ReactNode to allow this component to receive children.
  * 
@@ -8,11 +8,6 @@
  =====================================================================================================================*/
 import type { ReactNode } from "react";
 
-/**
- * StatGroup component for grouping multiple statistics.
- * @description Provides a container for displaying multiple `StatItem` components.
- * @param children - The child components to render inside the group.
- */
 const StatGroup = ({ children }: { children: ReactNode }) => {
     return (
         <div className="w-fill h-fill bg-background-1 rounded-corner">

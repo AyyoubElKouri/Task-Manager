@@ -39,8 +39,8 @@ const useActionButtons = () => {
     };
 
     const actions = {
-        NewTask: newTask,
-        DeleteAll: deleteAll,
+        newTask,
+        deleteAll,
     };
 
     return { actions };

@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
-import { Link, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Spinner from "../ui/Spinner";
 import { useFormAnimation } from "@/hooks/useFormAnimation";
 import { FormAlertBanner } from "./FormAlertBanner";
-import { useLogin } from "@/hooks/useLogin";
+import { useRegister } from "@/hooks/useRegister";
+import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
-    const { handlers, credentials, messages, redirection } = useLogin();
+const RegisterForm = () => {
+    const { handlers, credentials, messages, redirection } = useRegister();
     const { formReference, messageStart } = useFormAnimation();
     const navigate = useNavigate();
 
@@ -43,9 +43,9 @@ const LoginForm = () => {
             >
                 {/* === Header === */}
                 <header className="flex flex-col items-center">
-                    <h1 className="text-text-primary text-2xl">Login</h1>
+                    <h1 className="text-text-primary text-2xl">Register</h1>
                     <p className="text-text-secondary">
-                        Welcome to Zendo, login to your account
+                        Welcome to Zendo, create new account
                     </p>
                 </header>
 
@@ -66,17 +66,9 @@ const LoginForm = () => {
 
                 {/* === Password === */}
                 <div className="flex flex-col gap-2">
-                    <div className="flex justify-between">
-                        <Label className="text-text-primary" htmlFor="password">
-                            Password
-                        </Label>
-                        <Link
-                            to={"/forgot-password"}
-                            className="text-sm font-medium text-text-secondary hover:text-primary-700"
-                        >
-                            Forgot Password?
-                        </Link>
-                    </div>
+                    <Label className="text-text-primary" htmlFor="password">
+                        Password
+                    </Label>
                     <Input
                         id="password"
                         name="password"
@@ -87,20 +79,38 @@ const LoginForm = () => {
                     />
                 </div>
 
+                {/* === Confirm Password === */}
+                <div className="flex flex-col gap-2">
+                    <Label
+                        className="text-text-primary"
+                        htmlFor="confirmPassword"
+                    >
+                        Confirm Password
+                    </Label>
+                    <Input
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        className="text-text-secondary border-text-disabled"
+                        type="password"
+                        value={credentials.confirmPassword}
+                        onChange={handlers.handleChange}
+                    />
+                </div>
+
                 {/* === Action buttons === */}
                 <div className="w-fill flex justify-between">
                     <Button
                         className="bg-surface-dark-4 text-white w-34"
                         type="button"
-                        onClick={() => navigate("/register")}
+                        onClick={() => navigate('/login')}
                     >
-                        Register
+                        Login
                     </Button>
                     <Button
                         className="bg-primary-700 text-white w-34"
                         type="submit"
                     >
-                        {redirection ? <Spinner /> : "Login"}
+                        {redirection ? <Spinner /> : "Register"}
                     </Button>
                 </div>
             </form>
@@ -108,4 +118,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default RegisterForm;

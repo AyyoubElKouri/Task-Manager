@@ -1,7 +1,7 @@
 import LoginForm from "@/components/auth/LoginForm";
 import HomeHeader from "@/components/layouts/Header";
 
-export default function LoginPage() {
+export default function Login() {
     return (
         <div>
             <HomeHeader />

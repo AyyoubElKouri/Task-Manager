@@ -3,18 +3,18 @@ import { motion } from "framer-motion";
 export function FormAlertBanner({
     type,
     message,
-    errorStartY,
+    startYPosition,
 }: {
     type: "error" | "success";
     message: string;
-    errorStartY: number;
+    startYPosition: number;
 }) {
     return (
         <motion.div
             key="error-message"
-            initial={{ y: errorStartY, opacity: 0 }}
-            animate={{ y: errorStartY - 33, opacity: 1 }}
-            exit={{ y: errorStartY, opacity: 0 }}
+            initial={{ y: startYPosition, opacity: 0 }}
+            animate={{ y: startYPosition - 33, opacity: 1 }}
+            exit={{ y: startYPosition, opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             className={`absolute top-0 ${
                 type === "error"

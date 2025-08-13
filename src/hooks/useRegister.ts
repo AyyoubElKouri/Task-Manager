@@ -1,19 +1,15 @@
-import { validateLoginCredentials } from "@/helpers/validation";
-import type { LoginCredentials } from "@/types/auth";
-import {
-    useLayoutEffect,
-    useRef,
-    useState,
-    type ChangeEvent,
-    type FormEvent,
-} from "react";
+import { validateRegisterCredentials } from "@/helpers/validation";
+import type { RegisterCredentials } from "@/types/auth";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const useLogin = () => {
-    const [credentials, setCredentials] = useState<LoginCredentials>({
+export function useRegister() {
+    const [credentials, setCredentials] = useState<RegisterCredentials>({
         email: "",
         password: "",
+        confirmPassword: "",
     });
+
     const [error, setError] = useState<string>("");
     const [success, setSuccess] = useState<string>("");
     const [redirection, setRedirection] = useState<boolean>(false);
@@ -31,7 +27,7 @@ export const useLogin = () => {
         e.preventDefault();
 
         // Check credentials before calling Auth-API.
-        const errorCheck = validateLoginCredentials(credentials);
+        const errorCheck = validateRegisterCredentials(credentials);
         if (errorCheck) {
             setError(errorCheck);
             return;
@@ -44,11 +40,15 @@ export const useLogin = () => {
             const success = Math.random() > 0.5;
             if (success) {
                 setError("");
-                setSuccess("Login Successfully, Redirection ...");
-                setCredentials({ email: "", password: "" });
-                setTimeout(() => navigate("/dashboard"), 1000);
+                setSuccess("Registered successfully. Redirecting to login...");
+                setCredentials({
+                    email: "",
+                    password: "",
+                    confirmPassword: "",
+                });
+                setTimeout(() => navigate("/login"), 1000);
             } else {
-                setError("Email or password are not valide");
+                setError("Email already exists!");
             }
 
             setRedirection(false);
@@ -71,5 +71,4 @@ export const useLogin = () => {
         messages,
         redirection,
     };
-};
-
+}

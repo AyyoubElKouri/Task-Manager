@@ -1,5 +1,3 @@
-import { GalleryVerticalEnd } from "lucide-react";
-
 import LoginForm from "@/components/auth/LoginForm";
 import HomeHeader from "@/components/layouts/Header";
 

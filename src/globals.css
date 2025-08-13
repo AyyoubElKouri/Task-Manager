@@ -241,17 +241,17 @@ body {
 
     /* ===== ACCENT COLORS ===== */
     /* Success green */
-    --color-accent-success: #10b981;
-    --color-accent-success-hover: #059669;
+    --color-accent-success: #086947;
+    --color-accent-success-hover: #02261C;
     /* Warning orange */
-    --color-accent-warning: #f59e0b;
-    --color-accent-warning-hover: #d97706;
+    --color-accent-warning: #80570B;
+    --color-accent-warning-hover: #472704;
     /* Danger red */
-    --color-accent-danger: #ef4444;
-    --color-accent-danger-hover: #dc2626;
+    --color-accent-danger: #7D0606;
+    --color-accent-danger-hover: #4C0202;
     /* Info cyan */
-    --color-accent-info: #06b6d4;
-    --color-accent-info-hover: #0891b2;
+    --color-accent-info: #056B7D;
+    --color-accent-info-hover: #00303B;
 
     /* ===== BORDER COLORS ===== */
     /* Primary border */

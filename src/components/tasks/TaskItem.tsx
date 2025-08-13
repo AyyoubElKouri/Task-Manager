@@ -12,19 +12,31 @@
  * @exports TaskItem component to be used in TaskList or other places that may need it.
  * @see TaskList component.
  =====================================================================================================================*/
-import TaskInformation from "./TaskInformation";
-import type { Task } from "@/types/entities.types";
-import useTaskItem from "../hooks/useTaskItem";
+import TaskInformation from "./TaskProperty";
+import type { Task } from "@/types/entities";
+import useTaskItem from "../../hooks/useTaskItem";
 import { ConfirmationAlert } from "@/components/ui/AlertDialog";
 import { Copy } from "lucide-react";
 
-/**
- * TaskItem Component
- * @description Represents an individual task with editable fields and actions
- *              such as delete, toggle completion, and save changes.
- * @param task - The task object containing its properties.
- */
-const TaskItem = (task: Task) => {
+// To avoid hard-coded labels
+const ConfirmationLabels = {
+    message: "Are you sure?",
+    additionalMessage: "This task will be removed definitively",
+    actionLabel: "Delete",
+};
+
+// The icon that indicate if the task are completed or not
+const Icon = ({ completed }: { completed: boolean }) => {
+    return completed ? (
+        <img src="./images/Completed.svg" className="w-7 h-7" />
+    ) : (
+        <img src="./images/Timer.svg" className="w-5 h-5" />
+    );
+};
+
+interface TaskItemProps extends Task {}
+
+const TaskItem = (task: TaskItemProps) => {
     const { informations, handlers, setters } = useTaskItem(task);
 
     return (
@@ -33,9 +45,9 @@ const TaskItem = (task: Task) => {
         >
             {/* === Delete Button === */}
             <ConfirmationAlert
-                message={ConfirmationLabels.Message}
-                additionalMessage={ConfirmationLabels.AdditionalMessage}
-                actionLabel={ConfirmationLabels.ActionLabel}
+                message={ConfirmationLabels.message}
+                additionalMessage={ConfirmationLabels.additionalMessage}
+                actionLabel={ConfirmationLabels.actionLabel}
                 callback={handlers.handleDelete}
             >
                 <button className="w-task-item-delete flex justify-center items-center rounded-l-corner border-r-1 border-background-1 active:scale-90 bg-background-red">
@@ -43,7 +55,10 @@ const TaskItem = (task: Task) => {
                 </button>
             </ConfirmationAlert>
 
-            <button className="w-task-item-delete flex justify-center items-center border-r-1 border-background-1 active:scale-90 bg-green-900 text-white" onClick={handlers.handleCopy}>
+            <button
+                className="w-task-item-delete flex justify-center items-center border-r-1 border-background-1 active:scale-90 bg-green-900 text-white"
+                onClick={handlers.handleCopy}
+            >
                 <Copy className="w-5" />
             </button>
 
@@ -78,7 +93,7 @@ const TaskItem = (task: Task) => {
                 className={`w-task-item-completed flex justify-center items-center rounded-r-corner active:scale-90 ${
                     task.completed
                         ? "bg-background-blue"
-                        : "bg-background-orange "
+                        : "bg-background-orange"
                 }`}
                 onClick={handlers.handleToggle}
             >
@@ -89,24 +104,3 @@ const TaskItem = (task: Task) => {
 };
 
 export default TaskItem;
-
-/* ================================================= Local Helpers ================================================== */
-
-const ConfirmationLabels = {
-    Message: "Are you sure ?",
-    AdditionalMessage: "This task will be removed definitively",
-    ActionLabel: "Delete",
-};
-
-const Icon = ({ completed }: { completed: boolean }) => {
-    return (
-        <>
-            {completed ? (
-                <img src="./images/Completed.svg" className="w-7 h-7" />
-            ) : (
-                <img src="./images/Timer.svg" className="w-5 h-5" />
-            )}
-        </>
-    );
-};
-

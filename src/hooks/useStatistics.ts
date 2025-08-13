@@ -1,6 +1,6 @@
-import { useTaskStore } from "../stores/useTaskStore";
+import { useTaskStore } from "../stores/use-task-store";
 import { formatDuration } from "../helpers/duration";
-import type { Task } from "@/types/entities.types";
+import type { Task } from "@/types/entities";
 
 const COMPLETED = true;
 

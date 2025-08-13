@@ -8,7 +8,7 @@
  =====================================================================================================================*/
 
 import { TaskService } from "@/services/tasks/TaskService";
-import type { Task } from "@/types/entities.types";
+import type { Task } from "@/types/entities";
 import { useCallback, useMemo, useState, type ChangeEvent } from "react";
 
 interface Handlers {

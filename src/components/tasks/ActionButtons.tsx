@@ -11,7 +11,7 @@
  =====================================================================================================================*/
 
 import { Button } from "@/components/ui/Button";
-import useActionButtons from "../hooks/useActionButtons";
+import useActionButtons from "../../hooks/useActionButtons";
 import { ConfirmationAlert } from "@/components/ui/AlertDialog";
 
 // To avoid hard-coded strings.

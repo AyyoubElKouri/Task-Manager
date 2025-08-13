@@ -2,7 +2,7 @@ import { useState, type ChangeEvent } from "react";
 import EditInput from "./EditInput";
 import { formatDuration } from "@/helpers/duration";
 
-interface Information {
+interface TaskPropertyProps {
     value: string | number;
     onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     onSave: () => void;
@@ -10,26 +10,14 @@ interface Information {
     className?: string;
 }
 
-/**
- * TaskInformation Component
- *
- * @description Displays a task property with an option to edit its value.
- * Supports double-click to enter edit mode and saving changes.
- *
- * @param value - The current value of the task property.
- * @param onChange - Callback to update the value.
- * @param onSave - Callback to save the updated value.
- * @param length - Maximum length for the input field (optional).
- * @param className - Additional CSS classes for styling (optional).
- */
-const TaskInformation = ({
+
+const TaskProperty = ({
     value,
     onChange,
     onSave,
     length,
     className,
-}: Information) => {
-    // State to manage edit mode
+}: TaskPropertyProps) => {
     const [editMode, setEditMode] = useState(false);
 
     return (
@@ -61,4 +49,4 @@ const TaskInformation = ({
     );
 };
 
-export default TaskInformation;
+export default TaskProperty;

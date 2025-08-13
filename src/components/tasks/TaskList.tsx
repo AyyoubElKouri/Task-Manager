@@ -8,7 +8,7 @@
  * @exports TaskList component to be displayed.
  * @see TaskDashboard component.
  =====================================================================================================================*/
-import { useTaskStore } from "@/stores/useTaskStore";
+import { useTaskStore } from "@/stores/use-task-store";
 import TaskItem from "./TaskItem";
 
 /**

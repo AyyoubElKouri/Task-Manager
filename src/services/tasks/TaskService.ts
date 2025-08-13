@@ -1,5 +1,5 @@
-import { useTaskStore } from "../../stores/useTaskStore";
-import type { Task } from "../../types/entities.types";
+import { useTaskStore } from "../../stores/use-task-store";
+import type { Task } from "../../types/entities";
 
 import type { TaskRepository } from "./TaskRepository";
 import repository from "./TaskRepository";

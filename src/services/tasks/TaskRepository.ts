@@ -1,5 +1,5 @@
-import { TaskError } from "../../errors/TaskError";
-import type { Task } from "../../types/entities.types";
+import { TaskError } from "../errors/TaskError";
+import type { Task } from "../../types/entities";
 
 /**
  * Repository class for managing tasks using localStorage
@@ -161,7 +161,7 @@ export class TaskRepository {
             // Validate that parsed data is an array
             if (!Array.isArray(tasks)) {
                 throw new TaskError(
-                    "Invalid tasks data format in localStorage",
+                    "Invalid tasks data format in localStorage"
                 );
             }
 
@@ -169,7 +169,7 @@ export class TaskRepository {
             tasks.forEach((task, index) => {
                 if (!this.isValidTaskStructure(task)) {
                     throw new TaskError(
-                        `Invalid task structure at index ${index}`,
+                        `Invalid task structure at index ${index}`
                     );
                 }
             });
@@ -236,7 +236,7 @@ export class TaskRepository {
             task.source.trim() === ""
         ) {
             throw new TaskError(
-                "Task source is required and must be a non-empty string",
+                "Task source is required and must be a non-empty string"
             );
         }
 
@@ -247,7 +247,7 @@ export class TaskRepository {
             task.description.trim() === ""
         ) {
             throw new TaskError(
-                "Task description is required and must be a non-empty string",
+                "Task description is required and must be a non-empty string"
             );
         }
 
@@ -316,7 +316,7 @@ export class TaskRepository {
         throw new TaskError(
             `${message}: ${
                 error instanceof Error ? error.message : "Unknown error"
-            }`,
+            }`
         );
     }
 }

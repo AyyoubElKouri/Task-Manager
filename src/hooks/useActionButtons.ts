@@ -1,6 +1,6 @@
 import { Logger } from "@/helpers/logger";
 import { TaskService } from "@/services/tasks/TaskService";
-import type { Task } from "@/types/entities.types";
+import type { Task } from "@/types/entities";
 
 const logger = new Logger(
     "Action Buttons hook",
@@ -47,4 +47,3 @@ const useActionButtons = () => {
 };
 
 export default useActionButtons;
-

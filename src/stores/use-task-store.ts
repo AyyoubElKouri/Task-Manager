@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Task } from "../types/entities.types";
+import type { Task } from "../types/entities";
 
 /**
  * TaskStore interface defining the shape of our task management store
@@ -123,4 +123,3 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
         }));
     },
 }));
-

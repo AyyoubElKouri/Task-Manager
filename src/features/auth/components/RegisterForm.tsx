@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Button } from "@components/ui/Button";
 import { Input } from "@components/ui/Input";
@@ -16,7 +17,11 @@ const RegisterForm = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="bg-surface-dark-2 flex flex-col justify-center items-center">
+        <motion.div
+            initial={{ x: -200 }}
+            animate={{ x: 0 }}
+            className="bg-surface-dark-2 flex flex-col justify-center items-center"
+        >
             {messages.error && (
                 <AnimatePresence>
                     <FormAlertBanner
@@ -116,7 +121,7 @@ const RegisterForm = () => {
                     </Button>
                 </div>
             </form>
-        </div>
+        </motion.div>
     );
 };
 

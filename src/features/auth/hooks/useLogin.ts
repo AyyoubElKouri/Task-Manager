@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { validateLoginCredentials } from "@auth/helpers/validation";
 import type { LoginCredentials } from "@auth/types/credentials";
 
+const initialCredentials: LoginCredentials = {
+    email: "",
+    password: "",
+};
+
 export const useLogin = () => {
-    const [credentials, setCredentials] = useState<LoginCredentials>({
-        email: "",
-        password: "",
-    });
+    const [credentials, setCredentials] =
+        useState<LoginCredentials>(initialCredentials);
     const [error, setError] = useState<string>("");
     const [success, setSuccess] = useState<string>("");
     const [redirection, setRedirection] = useState<boolean>(false);
@@ -17,7 +20,10 @@ export const useLogin = () => {
 
     function handleChange(e: ChangeEvent<HTMLInputElement>): void {
         setError("");
-        setSuccess("");
+
+        // Input fix during redirection.
+        if (success) return;
+
         const { name, value } = e.target;
         setCredentials({ ...credentials, [name]: value });
     }

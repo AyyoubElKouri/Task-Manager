@@ -2,10 +2,10 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Home from "./features/marketing/pages/Home";
+import Dashboard from "./features/tasks/pages/Dashboard";
+import Login from "./features/auth/pages/Login";
+import Register from "./features/auth/pages/Register";
 
 import "./globals.css";
 

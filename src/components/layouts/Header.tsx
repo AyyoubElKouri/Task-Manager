@@ -10,7 +10,7 @@ const NAV_LINKS = {
     login: "Login",
 };
 
-const Header = () => {
+export const Header = () => {
     return (
         <header className="w-full h-12 px-50 bg-surface-dark-3 text-text-primary flex items-center justify-between">
             <Logo />
@@ -49,4 +49,3 @@ const Header = () => {
     );
 };
 
-export default Header;

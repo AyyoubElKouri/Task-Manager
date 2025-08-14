@@ -1,13 +1,21 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
+    "files": [],
+    "references": [
+        { "path": "./tsconfig.app.json" },
+        { "path": "./tsconfig.node.json" }
+    ],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"],
+
+            "@tasks/*": ["./src/features/tasks/*"],
+            "@auth/*": ["./src/features/auth/*"],
+            "@marketing/*": ["./src/features/marketing/*"],
+
+            "@components/*": ["./src/components/*"],
+            "@helpers/*": ["./src/helpers/*"],
+            "@assets/*": ["./src/assets/*"]
+        }
     }
-  }
 }

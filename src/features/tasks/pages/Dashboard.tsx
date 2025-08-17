@@ -44,7 +44,7 @@ const Dashboard = () => {
     } = useStatistics();
 
     return (
-        <div className="flex justify-center flex-col items-center gap-4 min-h-screen bg-[url('/images/Pattern.svg')] bg-repeat">
+        <div className="flex justify-center flex-col items-center gap-4">
             {/* === Statistics Section === */}
             <StatGroup>
                 <StatItem label="Total Tasks" value={numberOfTasks} />

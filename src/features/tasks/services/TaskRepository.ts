@@ -63,7 +63,9 @@ export class TaskRepository {
 
     /**
      * Deletes a task from localStorage
+     * 
      * @param taskId - ID of the task to delete
+     * 
      * @throws {TaskError} If task not found or localStorage is unavailable
      */
     public deleteTask(taskId: number): void {

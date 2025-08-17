@@ -9,7 +9,7 @@
  *              - deleteAll: removes all tasks from the store.
  =====================================================================================================================*/
 
-import { Logger } from "@/helpers/logger";
+import { Logger } from "@helpers/logger";
 
 import { TaskService } from "@tasks/services/TaskService";
 import type { Task } from "@tasks/types/entities";
